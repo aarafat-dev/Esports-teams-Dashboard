@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "free-fire-vision-benchmark",
+  "main": "src/server/index.ts",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "not_found_handling": "single-page-application", "run_worker_first": true },
+  "ai": { "binding": "AI", "remote": true },
+  "vars": { "AI_MODEL": "@cf/google/gemma-4-26b-a4b-it", "AI_INPUT_FORMAT": "chat-completions", "AI_TIMEOUT_MS": "120000" },
+  "d1_databases": [{ "binding": "DB", "database_name": "free-fire-benchmark", "database_id": "00000000-0000-0000-0000-000000000001", "migrations_dir": "migrations" }],
+  "r2_buckets": [{ "binding": "IMAGES", "bucket_name": "free-fire-benchmark-images" }],
+  "env": {
+    "offline": {
+      "name": "free-fire-vision-benchmark-offline",
+      "vars": { "AI_MODEL": "@cf/google/gemma-4-26b-a4b-it", "AI_INPUT_FORMAT": "chat-completions", "AI_TIMEOUT_MS": "120000" },
+      "d1_databases": [{ "binding": "DB", "database_name": "free-fire-benchmark", "database_id": "00000000-0000-0000-0000-000000000001", "migrations_dir": "migrations" }],
+      "r2_buckets": [{ "binding": "IMAGES", "bucket_name": "free-fire-benchmark-images" }]
+    }
+  }
+}

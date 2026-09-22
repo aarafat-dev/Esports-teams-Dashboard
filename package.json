@@ -1,0 +1,40 @@
+{
+  "name": "free-fire-vision-benchmark",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && npm run db:local && wrangler dev --ip 127.0.0.1",
+    "dev:offline": "npm run build && npm run db:local && wrangler dev --env offline --ip 127.0.0.1",
+    "dev:ui": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "db:local": "wrangler d1 migrations apply DB --local",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "deploy": "npm run build && wrangler deploy",
+    "cf:license": "node scripts/accept-license.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
+    "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^7.0.0",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.0.0"
+  }
+}
